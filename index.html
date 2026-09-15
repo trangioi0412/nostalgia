@@ -25,6 +25,50 @@
 </head>
 <body>
 
+<div id="lockScreen" style="position: fixed; inset: 0; z-index: 999999; display: flex; align-items: center; justify-content: center; background: radial-gradient(120% 90% at 50% 20%, #3B2A55 0%, #241A38 55%, #14101F 100%); font-family: 'Be Vietnam Pro', system-ui, sans-serif; padding: 24px;">
+  <form id="lockForm" style="display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 360px; width: 100%;">
+    <p style="margin: 0; font-size: 11px; letter-spacing: .38em; text-transform: uppercase; color: rgba(255,255,255,.55);">Chỉ dành cho hai đứa mình</p>
+    <h2 style="margin: 0; font-family: 'Dancing Script', cursive; font-weight: 600; font-size: clamp(24px, 5vw, 34px); color: #F4B6C8;">Nhập mã để mở khoá</h2>
+    <input id="lockInput" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="••••••••" style="width: 100%; text-align: center; letter-spacing: .5em; font-size: 20px; padding: 14px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; outline: none;" />
+    <button type="submit" style="cursor: pointer; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #241A38; background: #fff; border: 0; border-radius: 999px; padding: 13px 30px;">Mở</button>
+    <p id="lockError" style="margin: 0; font-size: 12px; color: #F4849F; min-height: 16px; opacity: 0; transition: opacity .2s ease;">Sai mã rồi, thử lại nhé.</p>
+  </form>
+</div>
+<style>
+  @keyframes lockShake { 10%,90% { transform: translateX(-1px); } 20%,80% { transform: translateX(2px); } 30%,50%,70% { transform: translateX(-4px); } 40%,60% { transform: translateX(4px); } }
+</style>
+<script>
+(function () {
+  var KEY = 'nostalgia_unlocked_v1';
+  var CODE = '29092019';
+  var lock = document.getElementById('lockScreen');
+  if (!lock) return;
+  try {
+    if (localStorage.getItem(KEY) === '1') { lock.remove(); return; }
+  } catch (e) {}
+  document.documentElement.style.overflow = 'hidden';
+  var form = document.getElementById('lockForm');
+  var input = document.getElementById('lockInput');
+  var err = document.getElementById('lockError');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (input.value.trim() === CODE) {
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      document.documentElement.style.overflow = '';
+      lock.style.transition = 'opacity .5s ease';
+      lock.style.opacity = '0';
+      setTimeout(function () { lock.remove(); }, 500);
+    } else {
+      err.style.opacity = '1';
+      input.value = '';
+      input.focus();
+      form.style.animation = 'none';
+      requestAnimationFrame(function () { form.style.animation = 'lockShake .4s ease'; });
+    }
+  });
+})();
+</script>
+
 <div id="app" style="position: relative; width: 100%; height: 100vh; min-height: 520px; overflow: hidden; background: #14101F; font-family: 'Be Vietnam Pro', system-ui, sans-serif; touch-action: none; cursor: default;">
 
   <!-- ============ WORLD ============ -->
@@ -278,16 +322,6 @@
     </svg>
   </div>
 
-  <!-- FINAL GIFT -->
-  <div id="fgift" style="position: absolute; left: 50%; bottom: 26%; width: 150px; height: 118px; transform: translateX(-50%); opacity: 0; pointer-events: none;">
-    <div class="deco-anim" style="position: absolute; left: 50%; top: 50%; width: 320px; height: 320px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(124,77,255,.42) 0%, rgba(124,77,255,0) 66%); filter: blur(6px); animation: pshim 3s ease-in-out infinite;"></div>
-    <div style="position: absolute; left: 0; top: 22px; width: 150px; height: 96px; border-radius: 5px; background: linear-gradient(145deg, #F4B6C8, #D67C9C);"></div>
-    <div style="position: absolute; left: 66px; top: 22px; width: 18px; height: 96px; background: linear-gradient(90deg, #7C4DFF, #9E78FF);"></div>
-    <div style="position: absolute; left: 0; top: 62px; width: 150px; height: 16px; background: linear-gradient(180deg, #7C4DFF, #9E78FF);"></div>
-    <div style="position: absolute; left: -6px; top: 8px; width: 162px; height: 22px; border-radius: 4px; background: linear-gradient(145deg, #FFFFFF, #F2C6D6);"></div>
-    <div class="deco-anim" style="position: absolute; left: 50%; top: -14px; width: 40px; height: 40px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFF, #9E78FF 70%, #7C4DFF 100%); animation: ppulse 2.6s ease-in-out infinite;"></div>
-  </div>
-
   <!-- YEAR LABELS -->
   <div id="y19" style="position: absolute; left: 12%; top: 18%; font-size: clamp(30px, 6vw, 74px); font-weight: 200; letter-spacing: .14em; color: rgba(60,50,45,.4); opacity: 0; pointer-events: none;">2019</div>
   <div id="y25" style="position: absolute; left: 11%; top: 16%; font-size: clamp(30px, 6vw, 74px); font-weight: 200; letter-spacing: .14em; color: rgba(60,50,45,.38); opacity: 0; pointer-events: none;">2025</div>
@@ -303,7 +337,7 @@
       <p style="margin: 0; font-size: clamp(10px, 1.4vw, 13px); letter-spacing: .42em; text-transform: uppercase; color: #9A7F92;">Chuyện của chúng mình bắt đầu từ</p>
       <p style="margin: 0; font-weight: 200; font-size: clamp(28px, 6vw, 62px); letter-spacing: .12em; color: #7C4DFF;">29 . 09 . 2019</p>
       <h1 style="margin: 0; font-family: 'Dancing Script', cursive; font-weight: 600; font-size: clamp(26px, 5.4vw, 60px); line-height: 1.15; color: #33262E;">Trần Văn Giới &amp; Lê Thị Thủy Tiên</h1>
-      <a href="./Ky Niem 29-09-2019.html" style="margin-top: 6px; padding: 14px 30px; border-radius: 999px; background: #7C4DFF; color: #FFF; font-size: 12px; letter-spacing: .2em; text-transform: uppercase;">Vào trang chính</a>
+      <a href="./Home.html" style="margin-top: 6px; padding: 14px 30px; border-radius: 999px; background: #7C4DFF; color: #FFF; font-size: 12px; letter-spacing: .2em; text-transform: uppercase;">Vào trang chính</a>
     </div>
   </div>
 
@@ -342,7 +376,7 @@
       <div data-dot="6" style="width: 16px; height: 2px; background: rgba(120,105,140,.35); transition: background .4s ease;"></div>
     </div>
     <div id="cue" class="deco-anim" style="position: absolute; left: 50%; bottom: 46px; transform: translateX(-50%); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: rgba(110,95,130,.75); animation: pfloat 3.4s ease-in-out infinite;">Cuộn để đi tiếp</div>
-    <a href="./Ky Niem 29-09-2019.html" style="position: absolute; right: 20px; top: 18px; pointer-events: auto; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(110,95,130,.7);">Bỏ qua</a>
+    <a href="./Home.html" style="position: absolute; right: 20px; top: 18px; pointer-events: auto; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(110,95,130,.7);">Bỏ qua</a>
   </div>
 </div>
 
@@ -381,7 +415,7 @@ class Journey {
     else this.motionQuery.addListener(onMotionChange);
     const r = root;
     const q = id => r.querySelector('#' + id);
-    ['cam','sky19','skyhs','skygr','skysg','lfar','lmid','lnear','chars','figA','figB','caps','cap1','cap2','conf','warm','spot','spotcone','spotfloor','map','route','mmark','mpulse','mdest','mdest2','mkm','fgift','y19','y25','y26','lineHS','line26','lineSG','lineEnd','handoff','pet','gate0','flash','ui','cue','gate','trees','crowd','shA','shB','glid','gbow','gbox'].forEach(k => { this.el[k] = q(k); });
+    ['cam','sky19','skyhs','skygr','skysg','lfar','lmid','lnear','chars','figA','figB','caps','cap1','cap2','conf','warm','spot','spotcone','spotfloor','map','route','mmark','mpulse','mdest','mdest2','mkm','y19','y25','y26','lineHS','line26','lineSG','lineEnd','handoff','pet','gate0','flash','ui','cue','gate','trees','crowd','shA','shB','glid','gbow','gbox'].forEach(k => { this.el[k] = q(k); });
     this.stagesA = this.el.figA.querySelectorAll('[data-stage]');
     this.stagesB = this.el.figB.querySelectorAll('[data-stage]');
     this.legs = r.querySelectorAll('[data-part="legf"], [data-part="legb"]');
@@ -618,10 +652,7 @@ class Journey {
     const mps = 1 + Math.sin(p * 2) * .06;
     e.mpulse.setAttribute('r', (14 * mps).toFixed(1));
 
-    // final gift + handoff
-    const fg = seg(p, 93, 96);
-    e.fgift.style.opacity = fg.toFixed(3);
-    e.fgift.style.transform = 'translateX(-50%) scale(' + lerp(.7, 1.25, seg(p, 93, 99)).toFixed(3) + ')';
+    // handoff
     const ho = seg(p, 97.5, 100);
     e.handoff.style.opacity = ho.toFixed(3);
     e.handoff.style.pointerEvents = ho > .9 ? 'auto' : 'none';
