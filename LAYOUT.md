@@ -12,119 +12,1460 @@ Có 2 nhân vật, mỗi nhân vật có 5 giai đoạn trang phục (`data-stag
 
 ### Nhân vật A (khăn đỏ)
 ```html
-<svg viewBox="0 0 60 150" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;">
+<svg
+  viewBox="0 0 80 160"
+  preserveAspectRatio="xMidYMax meet"
+  style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;"
+>
+  <defs>
+
+    <!-- ============================= -->
+    <!-- SKIN -->
+    <!-- ============================= -->
+
+    <linearGradient id="skinGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5D8BC"/>
+      <stop offset="55%" stop-color="#EAC3A0"/>
+      <stop offset="100%" stop-color="#D9A982"/>
+    </linearGradient>
+
+    <!-- ============================= -->
+    <!-- SHIRT -->
+    <!-- ============================= -->
+
+    <linearGradient id="shirtGradient" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="65%" stop-color="#F4F5F8"/>
+      <stop offset="100%" stop-color="#DDE1E8"/>
+    </linearGradient>
+
+    <!-- ============================= -->
+    <!-- PANTS -->
+    <!-- ============================= -->
+
+    <linearGradient id="pantsGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3E4E6B"/>
+      <stop offset="50%" stop-color="#30405D"/>
+      <stop offset="100%" stop-color="#25334C"/>
+    </linearGradient>
+
+    <!-- ============================= -->
+    <!-- HAIR -->
+    <!-- ============================= -->
+
+    <linearGradient id="hairGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#54434D"/>
+      <stop offset="50%" stop-color="#40323B"/>
+      <stop offset="100%" stop-color="#2C242C"/>
+    </linearGradient>
+
+    <!-- ============================= -->
+    <!-- SCARF -->
+    <!-- ============================= -->
+
+    <linearGradient id="scarfGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E15B5B"/>
+      <stop offset="100%" stop-color="#B93643"/>
+    </linearGradient>
+
+    <!-- ============================= -->
+    <!-- SHOES -->
+    <!-- ============================= -->
+
+    <linearGradient id="shoeGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#465166"/>
+      <stop offset="100%" stop-color="#202735"/>
+    </linearGradient>
+
+    <!-- ============================= -->
+    <!-- SHADOW -->
+    <!-- ============================= -->
+
+    <radialGradient id="groundShadow">
+      <stop offset="0%" stop-color="#172235" stop-opacity=".28"/>
+      <stop offset="100%" stop-color="#172235" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softShadow">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- ========================================================= -->
+  <!-- STAGE 19 — SCHOOL / CHILD -->
+  <!-- ========================================================= -->
+
   <g data-stage="s19">
-    <g data-part="legb"><rect x="26" y="88" width="8" height="56" rx="4" fill="#3E4E6B"></rect></g>
-    <g data-part="legf"><rect x="26" y="88" width="8" height="56" rx="4" fill="#4A5C7A"></rect></g>
-    <g data-part="armb"><rect x="13" y="50" width="7" height="32" rx="3.5" fill="#D9B894"></rect></g>
-    <rect x="19" y="45" width="22" height="48" rx="6" fill="#F7F7F9"></rect>
-    <path data-part="scarf" d="M22 50 L38 50 L34 62 L30 54 L26 62 Z" fill="#C94A4A"></path>
-    <g data-part="armf"><rect x="40" y="50" width="7" height="32" rx="3.5" fill="#E8C9A8"></rect></g>
-    <circle cx="30" cy="26" r="11.5" fill="#E8C9A8"></circle>
-    <path d="M18 24 C18 12, 26 11, 30 14 C34 10, 43 12, 42 25 C42 19, 35 17, 29 19 C23 21, 19 20, 18 24 Z" fill="#3F3038"></path>
+
+    <!-- Ground shadow -->
+    <ellipse
+      cx="40"
+      cy="153"
+      rx="20"
+      ry="3.5"
+      fill="url(#groundShadow)"
+    />
+
+
+    <!-- BACK LEG -->
+    <g data-part="legb">
+
+      <path
+        d="
+          M32 89
+          C32 104 31.5 125 31.5 143
+          L39 143
+          L40 90
+          Z
+        "
+        fill="url(#pantsGradient)"
+      />
+
+      <!-- shoe -->
+      <path
+        d="
+          M30 140
+          C32 138.5 37 138.5 39 140
+          L41 146
+          C41 148 38 149 33 149
+          L28 148
+          C28 145 29 142 30 140
+        "
+        fill="url(#shoeGradient)"
+      />
+
+    </g>
+
+
+    <!-- FRONT LEG -->
+    <g data-part="legf">
+
+      <path
+        d="
+          M40 90
+          L48 90
+          C48 108 48.5 126 49 143
+          L40 143
+          Z
+        "
+        fill="url(#pantsGradient)"
+      />
+
+      <!-- shoe -->
+      <path
+        d="
+          M40 140
+          C43 138.5 49 139 51 141
+          L54 146
+          C54 148 51 149 46 149
+          L40 148
+          Z
+        "
+        fill="url(#shoeGradient)"
+      />
+
+    </g>
+
+
+    <!-- BACK ARM -->
+    <g data-part="armb">
+
+      <path
+        d="
+          M23 54
+          C19 59 18 68 18 76
+          C18 81 19.5 83 21.5 82
+          C23.5 81.5 24.5 78 24.5 74
+          L27 59
+          Z
+        "
+        fill="url(#skinGradient)"
+      />
+
+    </g>
+
+
+    <!-- BODY -->
+    <path
+      d="
+        M27 49
+        C31 46.5 35 45.5 40 45.5
+        C45 45.5 49 46.5 53 49
+        L56 88
+        C52 92
+        46 94
+        40 94
+        C34 94 28 92
+        24 88
+        Z
+      "
+      fill="url(#shirtGradient)"
+    />
+
+
+    <!-- subtle shirt side shading -->
+    <path
+      d="
+        M27 53
+        C26 64 26 76 27 87
+      "
+      fill="none"
+      stroke="#D4D8E0"
+      stroke-width="1"
+      opacity=".5"
+    />
+
+
+    <!-- COLLAR -->
+    <path
+      d="
+        M28 49
+        L39 47
+        L35 58
+        L28 52
+        Z
+      "
+      fill="#FFFFFF"
+    />
+
+    <path
+      d="
+        M52 49
+        L41 47
+        L45 58
+        L52 52
+        Z
+      "
+      fill="#FFFFFF"
+    />
+
+
+    <!-- SCARF -->
+    <path
+      data-part="scarf"
+      d="
+        M35 51
+        L40 54
+        L45 51
+        L43 61
+        L40 57
+        L36 65
+        L35 58
+        Z
+      "
+      fill="url(#scarfGradient)"
+    />
+
+    <circle
+      cx="40"
+      cy="54"
+      r="2.2"
+      fill="#C94049"
+    />
+
+
+    <!-- FRONT ARM -->
+    <g data-part="armf">
+
+      <path
+        d="
+          M53 54
+          C57 59 59 68 59 76
+          C59 81 57.5 83 55.5 82
+          C53.5 81.5 52.5 78 52.5 74
+          L50 59
+          Z
+        "
+        fill="url(#skinGradient)"
+      />
+
+    </g>
+
+
+    <!-- NECK -->
+    <path
+      d="
+        M36.5 41
+        L43.5 41
+        L44 49
+        C42 51 38 51 36 49
+        Z
+      "
+      fill="url(#skinGradient)"
+    />
+
+
+    <!-- HEAD -->
+    <path
+      d="
+        M30 26
+        C30 19 34 14.5 40 14.5
+        C46 14.5 50 19 50 26
+        L49 35
+        C48 42 44 46 40 46
+        C36 46 32 42 31 35
+        Z
+      "
+      fill="url(#skinGradient)"
+    />
+
+
+    <!-- EARS -->
+    <ellipse
+      cx="30.5"
+      cy="31"
+      rx="2"
+      ry="3.5"
+      fill="#E4B58F"
+    />
+
+    <ellipse
+      cx="49.5"
+      cy="31"
+      rx="2"
+      ry="3.5"
+      fill="#E4B58F"
+    />
+
+
+    <!-- HAIR -->
+    <path
+      d="
+        M30 27
+        C29 20
+        31 16
+        35 14
+        C39 11.5
+        45 13
+        48 16
+        C51 19
+        51 24
+        50 29
+        C48 25
+        46 23
+        43 22
+        C40 21
+        37 22
+        35 24
+        C33 26
+        31 27
+        30 27
+        Z
+      "
+      fill="url(#hairGradient)"
+    />
+
+    <!-- hair highlight -->
+    <path
+      d="
+        M34 17
+        C37 14.5 41 14 44 16
+      "
+      fill="none"
+      stroke="#725B66"
+      stroke-width="1"
+      stroke-linecap="round"
+      opacity=".5"
+    />
+
   </g>
+
+
+
+  <!-- ========================================================= -->
+  <!-- STAGE SHS — TEEN -->
+  <!-- ========================================================= -->
+
   <g data-stage="shs" opacity="0">
-    <g data-part="legb"><rect x="26" y="84" width="8" height="60" rx="4" fill="#28313F"></rect></g>
-    <g data-part="legf"><rect x="26" y="84" width="8" height="60" rx="4" fill="#2F3A4E"></rect></g>
-    <g data-part="armb"><rect x="12" y="44" width="7" height="34" rx="3.5" fill="#D9B894"></rect></g>
-    <rect x="18" y="39" width="24" height="50" rx="5" fill="#EDEDF2"></rect>
-    <g data-part="armf"><rect x="41" y="44" width="7" height="34" rx="3.5" fill="#E8C9A8"></rect></g>
-    <circle cx="30" cy="22" r="11" fill="#E8C9A8"></circle>
-    <path d="M18 20 C18 9, 26 8, 30 11 C34 7, 43 9, 42 21 C42 15, 35 13, 29 15 C23 17, 19 16, 18 20 Z" fill="#3F3038"></path>
+
+    <ellipse
+      cx="40"
+      cy="153"
+      rx="20"
+      ry="3.5"
+      fill="url(#groundShadow)"
+    />
+
+
+    <!-- BACK LEG -->
+    <g data-part="legb">
+
+      <path
+        d="
+          M32 88
+          L40 88
+          L39 143
+          L31 143
+          Z
+        "
+        fill="#293548"
+      />
+
+      <path
+        d="
+          M30 140
+          C32 139 37 139 39 140
+          L41 146
+          C41 148 38 149 33 149
+          L28 148
+          C28 145 29 142 30 140
+        "
+        fill="url(#shoeGradient)"
+      />
+
+    </g>
+
+
+    <!-- FRONT LEG -->
+    <g data-part="legf">
+
+      <path
+        d="
+          M40 88
+          L48 88
+          L49 143
+          L40 143
+          Z
+        "
+        fill="#34425A"
+      />
+
+      <path
+        d="
+          M40 140
+          C43 139 49 139 51 141
+          L54 146
+          C54 148 51 149 46 149
+          L40 148
+          Z
+        "
+        fill="url(#shoeGradient)"
+      />
+
+    </g>
+
+
+    <!-- BACK ARM -->
+    <g data-part="armb">
+
+      <path
+        d="
+          M24 52
+          C20 57 19 67 19 76
+          C19 80 20.5 82 22.5 82
+          C24.5 81 25 78 25 75
+          L28 56
+          Z
+        "
+        fill="url(#skinGradient)"
+      />
+
+    </g>
+
+
+    <!-- BODY -->
+    <path
+      d="
+        M27 47
+        C31 45 35 44.5 40 44.5
+        C45 44.5 49 45 53 47
+        L56 88
+        C52 92 46 93 40 93
+        C34 93 28 92 24 88
+        Z
+      "
+      fill="url(#shirtGradient)"
+    />
+
+
+    <!-- collar -->
+    <path
+      d="
+        M29 47
+        L40 46
+        L36 56
+        Z
+      "
+      fill="#FFFFFF"
+    />
+
+    <path
+      d="
+        M51 47
+        L40 46
+        L44 56
+        Z
+      "
+      fill="#FFFFFF"
+    />
+
+
+    <!-- FRONT ARM -->
+    <g data-part="armf">
+
+      <path
+        d="
+          M53 52
+          C57 57 58 67 58 76
+          C58 80 57 82 55 82
+          C53 81 52 78 52 75
+          L49 56
+          Z
+        "
+        fill="url(#skinGradient)"
+      />
+
+    </g>
+
+
+    <!-- neck -->
+    <path
+      d="
+        M36 40
+        L44 40
+        L44 47
+        C42 49 38 49 36 47
+        Z
+      "
+      fill="url(#skinGradient)"
+    />
+
+
+    <!-- head -->
+    <path
+      d="
+        M29 26
+        C29 19 34 14
+        40 14
+        C46 14 51 19 51 26
+        L50 35
+        C49 41 45 45 40 45
+        C35 45 31 41 30 35
+        Z
+      "
+      fill="url(#skinGradient)"
+    />
+
+
+    <!-- hair -->
+    <path
+      d="
+        M29 27
+        C29 19 34 14 40 14
+        C46 14 51 19 51 27
+        C48 23
+        45 21
+        41 21
+        C36 21
+        33 25
+        29 27
+        Z
+      "
+      fill="url(#hairGradient)"
+    />
+
   </g>
+
+
+
+  <!-- ========================================================= -->
+  <!-- STAGE SGR — GRADUATION -->
+  <!-- ========================================================= -->
+
   <g data-stage="sgr" opacity="0">
-    <g data-part="legb"><rect x="26" y="100" width="9" height="44" rx="4" fill="#28313F"></rect></g>
-    <g data-part="armb"><rect x="14" y="42" width="7" height="42" rx="3.5" fill="#322D46"></rect></g>
-    <path d="M18 38 L42 38 L46 122 L14 122 Z" fill="#3B3552"></path>
-    <path d="M26 38 L30 62 L34 38 Z" fill="#EFEFF4"></path>
-    <g data-part="armf"><rect x="39" y="42" width="7" height="42" rx="3.5" fill="#322D46"></rect></g>
-    <circle cx="30" cy="22" r="11" fill="#E8C9A8"></circle>
-    <path d="M18 20 C18 10, 26 9, 30 12 C34 8, 43 10, 42 21 C42 15, 35 13, 29 15 C23 17, 19 16, 18 20 Z" fill="#3F3038"></path>
-    <rect data-part="cap" x="16" y="11" width="28" height="4" rx="1" fill="#2C2740"></rect>
-    <rect data-part="cap" x="26" y="7" width="8" height="5" rx="1" fill="#2C2740"></rect>
+
+    <ellipse
+      cx="40"
+      cy="153"
+      rx="21"
+      ry="3.5"
+      fill="url(#groundShadow)"
+    />
+
+
+    <!-- BACK LEG -->
+    <g data-part="legb">
+
+      <path
+        d="
+          M32 98
+          L40 98
+          L39 143
+          L31 143
+          Z
+        "
+        fill="#292532"
+      />
+
+    </g>
+
+
+    <!-- FRONT LEG -->
+    <g data-part="legf">
+
+      <path
+        d="
+          M40 98
+          L48 98
+          L49 143
+          L40 143
+          Z
+        "
+        fill="#302B3C"
+      />
+
+    </g>
+
+
+    <!-- shoes -->
+    <path
+      d="
+        M30 140
+        C32 139 37 139 39 140
+        L41 146
+        C41 148 38 149 33 149
+        L28 148
+        C28 145 29 142 30 140
+      "
+      fill="url(#shoeGradient)"
+    />
+
+    <path
+      d="
+        M40 140
+        C43 139 49 139 51 141
+        L54 146
+        C54 148 51 149 46 149
+        L40 148
+        Z
+      "
+      fill="url(#shoeGradient)"
+    />
+
+
+    <!-- ROBE -->
+    <path
+      d="
+        M27 45
+        L53 45
+        L57 121
+        L23 121
+        Z
+      "
+      fill="#403956"
+    />
+
+
+    <!-- robe highlight -->
+    <path
+      d="
+        M28 47
+        L39 47
+        L39 119
+        L24 119
+        Z
+      "
+      fill="#51496A"
+      opacity=".45"
+    />
+
+
+    <!-- BACK ARM -->
+    <g data-part="armb">
+
+      <path
+        d="
+          M26 47
+          C22 54 20 69 20 80
+          C20 84 22 86 24 85
+          C27 84 28 80 28 75
+          L31 51
+          Z
+        "
+        fill="#383248"
+      />
+
+    </g>
+
+
+    <!-- FRONT ARM -->
+    <g data-part="armf">
+
+      <path
+        d="
+          M54 47
+          C58 54 60 69 60 80
+          C60 84 58 86 56 85
+          C53 84 52 80 52 75
+          L49 51
+          Z
+        "
+        fill="#383248"
+      />
+
+    </g>
+
+
+    <!-- STOLE -->
+    <path
+      d="
+        M35 45
+        L40 62
+        L45 45
+        L43 76
+        L40 68
+        L37 76
+        Z
+      "
+      fill="#F0EFF4"
+    />
+
+
+    <!-- neck -->
+    <path
+      d="
+        M36 40
+        L44 40
+        L44 46
+        C42 48 38 48 36 46
+        Z
+      "
+      fill="url(#skinGradient)"
+    />
+
+
+    <!-- head -->
+    <circle
+      cx="40"
+      cy="27"
+      r="11"
+      fill="url(#skinGradient)"
+    />
+
+
+    <!-- hair -->
+    <path
+      d="
+        M29 27
+        C29 18
+        34 14
+        40 14
+        C46 14
+        51 18
+        51 27
+        C48 23
+        45 21
+        41 21
+        C36 21
+        33 24
+        29 27
+        Z
+      "
+      fill="url(#hairGradient)"
+    />
+
+
+    <!-- GRADUATION CAP -->
+    <g data-part="cap">
+
+      <!-- top -->
+      <path
+        d="
+          M25 16
+          L40 9
+          L55 16
+          L40 23
+          Z
+        "
+        fill="#29243C"
+      />
+
+      <!-- center -->
+      <path
+        d="
+          M31 17
+          L40 13
+          L49 17
+          L48 20
+          C43 22
+          37 22
+          32 20
+          Z
+        "
+        fill="#36304D"
+      />
+
+      <!-- tassel -->
+      <path
+        d="
+          M53 16
+          C56 21
+          55 27
+          54 31
+        "
+        fill="none"
+        stroke="#D2B16E"
+        stroke-width="1.2"
+        stroke-linecap="round"
+      />
+
+      <circle
+        cx="54"
+        cy="32"
+        r="1.5"
+        fill="#D8B675"
+      />
+
+    </g>
+
   </g>
+
+
+
+  <!-- ========================================================= -->
+  <!-- STAGE S26 — MATURE GRADUATE -->
+  <!-- ========================================================= -->
+
   <g data-stage="s26" opacity="0">
-    <g data-part="legb"><rect x="26" y="100" width="9" height="44" rx="4" fill="#2A2438"></rect></g>
-    <g data-part="armb"><rect x="14" y="42" width="7" height="42" rx="3.5" fill="#3E3659"></rect></g>
-    <path d="M18 38 L42 38 L46 122 L14 122 Z" fill="#4A4168"></path>
-    <path d="M26 38 L30 64 L34 38 Z" fill="#E8DFEF"></path>
-    <g data-part="armf"><rect x="39" y="42" width="7" height="42" rx="3.5" fill="#3E3659"></rect></g>
-    <circle cx="30" cy="22" r="11" fill="#F0DFC8"></circle>
-    <path d="M18 20 C18 10, 26 9, 30 12 C34 8, 43 10, 42 21 C42 15, 35 13, 29 15 C23 17, 19 16, 18 20 Z" fill="#3A2F38"></path>
-    <rect x="16" y="11" width="28" height="4" rx="1" fill="#2C2740"></rect>
-    <rect x="26" y="7" width="8" height="5" rx="1" fill="#2C2740"></rect>
+
+    <ellipse
+      cx="40"
+      cy="153"
+      rx="21"
+      ry="3.5"
+      fill="url(#groundShadow)"
+    />
+
+
+    <!-- legs -->
+    <g data-part="legb">
+
+      <path
+        d="
+          M32 99
+          L40 99
+          L39 143
+          L31 143
+          Z
+        "
+        fill="#292335"
+      />
+
+    </g>
+
+
+    <g data-part="legf">
+
+      <path
+        d="
+          M40 99
+          L48 99
+          L49 143
+          L40 143
+          Z
+        "
+        fill="#30293F"
+      />
+
+    </g>
+
+
+    <!-- shoes -->
+    <path
+      d="
+        M30 140
+        C32 139 37 139 39 140
+        L41 146
+        C41 148 38 149 33 149
+        L28 148
+        C28 145 29 142 30 140
+      "
+      fill="url(#shoeGradient)"
+    />
+
+    <path
+      d="
+        M40 140
+        C43 139 49 139 51 141
+        L54 146
+        C54 148 51 149 46 149
+        L40 148
+        Z
+      "
+      fill="url(#shoeGradient)"
+    />
+
+
+    <!-- robe -->
+    <path
+      d="
+        M27 45
+        L53 45
+        L57 121
+        L23 121
+        Z
+      "
+      fill="#51486F"
+    />
+
+
+    <!-- robe light -->
+    <path
+      d="
+        M28 47
+        L40 47
+        L39 119
+        L24 119
+        Z
+      "
+      fill="#61577D"
+      opacity=".35"
+    />
+
+
+    <!-- stole -->
+    <path
+      d="
+        M35 45
+        L40 64
+        L45 45
+        L43 76
+        L40 68
+        L37 76
+        Z
+      "
+      fill="#EEEAF2"
+    />
+
+
+    <!-- back arm -->
+    <g data-part="armb">
+
+      <path
+        d="
+          M26 47
+          C22 54 20 69 20 80
+          C20 84 22 86 24 85
+          C27 84 28 80 28 75
+          L31 51
+          Z
+        "
+        fill="#3D3557"
+      />
+
+    </g>
+
+
+    <!-- front arm -->
+    <g data-part="armf">
+
+      <path
+        d="
+          M54 47
+          C58 54 60 69 60 80
+          C60 84 58 86 56 85
+          C53 84 52 80 52 75
+          L49 51
+          Z
+        "
+        fill="#3D3557"
+      />
+
+    </g>
+
+
+    <!-- neck -->
+    <path
+      d="
+        M36 40
+        L44 40
+        L44 46
+        C42 48 38 48 36 46
+        Z
+      "
+      fill="#EBC6A4"
+    />
+
+
+    <!-- head -->
+    <circle
+      cx="40"
+      cy="27"
+      r="11"
+      fill="#F0DFC8"
+    />
+
+
+    <!-- hair -->
+    <path
+      d="
+        M29 27
+        C29 18
+        34 14
+        40 14
+        C46 14
+        51 18
+        51 27
+        C48 23
+        45 21
+        41 21
+        C36 21
+        33 24
+        29 27
+        Z
+      "
+      fill="#3A2F38"
+    />
+
+
+    <!-- cap -->
+    <g data-part="cap">
+
+      <path
+        d="
+          M25 16
+          L40 9
+          L55 16
+          L40 23
+          Z
+        "
+        fill="#29243C"
+      />
+
+      <path
+        d="
+          M31 17
+          L40 13
+          L49 17
+          L48 20
+          C43 22
+          37 22
+          32 20
+          Z
+        "
+        fill="#36304D"
+      />
+
+      <path
+        d="
+          M53 16
+          C56 21
+          55 27
+          54 31
+        "
+        fill="none"
+        stroke="#D2B16E"
+        stroke-width="1.2"
+        stroke-linecap="round"
+      />
+
+      <circle
+        cx="54"
+        cy="32"
+        r="1.5"
+        fill="#D8B675"
+      />
+
+    </g>
+
   </g>
+
+
+
+  <!-- ========================================================= -->
+  <!-- STAGE SSG — DARK / SPECIAL -->
+  <!-- ========================================================= -->
+
   <g data-stage="ssg" opacity="0">
-    <g data-part="legb"><rect x="26" y="86" width="8" height="58" rx="4" fill="#2A2430"></rect></g>
-    <g data-part="legf"><rect x="26" y="86" width="8" height="58" rx="4" fill="#2E2836"></rect></g>
-    <g data-part="armb"><rect x="12" y="44" width="7" height="34" rx="3.5" fill="#262030"></rect></g>
-    <rect x="18" y="39" width="24" height="52" rx="5" fill="#2E2836"></rect>
-    <g data-part="armf"><rect x="41" y="44" width="7" height="34" rx="3.5" fill="#262030"></rect></g>
-    <circle cx="30" cy="22" r="11" fill="#2E2836"></circle>
-    <path d="M18 20 C18 9, 26 8, 30 11 C34 7, 43 9, 42 21 C42 15, 35 13, 29 15 C23 17, 19 16, 18 20 Z" fill="#231E2A"></path>
-    <path d="M41 14 C44 20, 44 34, 42 44 L44 44 C46 32, 46 19, 43 13 Z" fill="rgba(255,215,154,.55)"></path>
+
+    <ellipse
+      cx="40"
+      cy="153"
+      rx="22"
+      ry="4"
+      fill="url(#groundShadow)"
+    />
+
+
+    <!-- back leg -->
+    <g data-part="legb">
+
+      <path
+        d="
+          M32 91
+          L40 91
+          L39 143
+          L31 143
+          Z
+        "
+        fill="#24202C"
+      />
+
+    </g>
+
+
+    <!-- front leg -->
+    <g data-part="legf">
+
+      <path
+        d="
+          M40 91
+          L48 91
+          L49 143
+          L40 143
+          Z
+        "
+        fill="#2E2937"
+      />
+
+    </g>
+
+
+    <!-- shoes -->
+    <path
+      d="
+        M30 140
+        C32 139 37 139 39 140
+        L41 146
+        C41 148 38 149 33 149
+        L28 148
+        C28 145 29 142 30 140
+      "
+      fill="#242A35"
+    />
+
+    <path
+      d="
+        M40 140
+        C43 139 49 139 51 141
+        L54 146
+        C54 148 51 149 46 149
+        L40 148
+        Z
+      "
+      fill="#242A35"
+    />
+
+
+    <!-- BODY -->
+    <path
+      d="
+        M26 47
+        C31 44
+        35 43
+        40 43
+        C45 43
+        50 44
+        54 47
+        L57 91
+        C52 94
+        46 95
+        40 95
+        C34 95
+        28 94
+        23 91
+        Z
+      "
+      fill="#302B38"
+    />
+
+
+    <!-- subtle body light -->
+    <path
+      d="
+        M29 50
+        C28 63 28 77 29 89
+      "
+      fill="none"
+      stroke="#514857"
+      stroke-width="1"
+      opacity=".5"
+    />
+
+
+    <!-- back arm -->
+    <g data-part="armb">
+
+      <path
+        d="
+          M25 49
+          C21 56 20 69 20 78
+          C20 82 22 84 24 83
+          C26 82 27 78 27 74
+          L30 52
+          Z
+        "
+        fill="#29242F"
+      />
+
+    </g>
+
+
+    <!-- front arm -->
+    <g data-part="armf">
+
+      <path
+        d="
+          M55 49
+          C59 56 60 69 60 78
+          C60 82 58 84 56 83
+          C54 82 53 78 53 74
+          L50 52
+          Z
+        "
+        fill="#29242F"
+      />
+
+    </g>
+
+
+    <!-- neck -->
+    <path
+      d="
+        M36 40
+        L44 40
+        L44 46
+        C42 48 38 48 36 46
+        Z
+      "
+      fill="#302B38"
+    />
+
+
+    <!-- head -->
+    <circle
+      cx="40"
+      cy="27"
+      r="11"
+      fill="#302B38"
+    />
+
+
+    <!-- hair -->
+    <path
+      d="
+        M29 27
+        C29 18
+        34 14
+        40 14
+        C46 14
+        51 18
+        51 27
+        C48 23
+        45 21
+        41 21
+        C36 21
+        33 24
+        29 27
+        Z
+      "
+      fill="#211D27"
+    />
+
+
+    <!-- warm rim light -->
+    <path
+      d="
+        M51 20
+        C55 29
+        55 38
+        52 45
+      "
+      fill="none"
+      stroke="#FFD79A"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      opacity=".35"
+    />
+
+  </g>
+
+</svg>
+```
+
+> Lưu ý nếu đưa bản này vào `index.html` thật: viewBox đổi từ `0 0 60 150` → `0 0 80 160`, các phần dùng `fill="url(#...)"` cần có `<defs>` đi kèm, và tâm xoay tay/chân trong JS (`rotate(... 30 90)`, `rotate(... 30 48)`) đang tính theo hệ toạ độ cũ (tâm x=30) — cần đổi lại cho khớp hệ toạ độ mới (tâm x=40) thì animation đi bộ mới đúng.
+
+### Nhân vật B (tóc dài, áo dài trắng ở giai đoạn `shs`)
+```html
+<svg
+  viewBox="0 0 80 160"
+  preserveAspectRatio="xMidYMax meet"
+  style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;"
+>
+  <defs>
+
+    <!-- SKIN -->
+    <linearGradient id="skinGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7DCC2"/>
+      <stop offset="55%" stop-color="#EFC9A9"/>
+      <stop offset="100%" stop-color="#DDAF8C"/>
+    </linearGradient>
+
+    <!-- SHIRT -->
+    <linearGradient id="shirtGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="65%" stop-color="#F7F7F9"/>
+      <stop offset="100%" stop-color="#E0E3EA"/>
+    </linearGradient>
+
+    <!-- PANTS -->
+    <linearGradient id="pantsGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#52637F"/>
+      <stop offset="50%" stop-color="#3E4E6B"/>
+      <stop offset="100%" stop-color="#2D3A52"/>
+    </linearGradient>
+
+    <!-- HAIR -->
+    <linearGradient id="hairGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5A454F"/>
+      <stop offset="50%" stop-color="#403139"/>
+      <stop offset="100%" stop-color="#2B2229"/>
+    </linearGradient>
+
+    <!-- SCARF -->
+    <linearGradient id="scarfGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E76568"/>
+      <stop offset="100%" stop-color="#B93C47"/>
+    </linearGradient>
+
+    <!-- ROBE -->
+    <linearGradient id="robeGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#51486F"/>
+      <stop offset="55%" stop-color="#423A5E"/>
+      <stop offset="100%" stop-color="#332D4B"/>
+    </linearGradient>
+
+    <!-- DARK -->
+    <linearGradient id="darkGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3A3445"/>
+      <stop offset="55%" stop-color="#2D2835"/>
+      <stop offset="100%" stop-color="#211D28"/>
+    </linearGradient>
+
+    <!-- SHOES -->
+    <linearGradient id="shoeGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4D586A"/>
+      <stop offset="100%" stop-color="#202733"/>
+    </linearGradient>
+
+    <!-- GROUND -->
+    <radialGradient id="groundShadow">
+      <stop offset="0%" stop-color="#152033" stop-opacity=".30"/>
+      <stop offset="100%" stop-color="#152033" stop-opacity="0"/>
+    </radialGradient>
+
+  </defs>
+
+  <g data-stage="s19">
+    <ellipse cx="40" cy="151.5" rx="18" ry="3" fill="url(#groundShadow)"/>
+    <g data-part="legb">
+      <path d="M32 88 C31.5 103 31.5 124 31.5 142 L38.5 142 L40 89 Z" fill="url(#pantsGradient)"/>
+      <path d="M30 140 C32 138.5 37 139 39 140 L41 146 C41 148 38 149 33 149 L28 148 C28 145 29 142 30 140 Z" fill="url(#shoeGradient)"/>
+    </g>
+    <g data-part="legf">
+      <path d="M40 89 L48 89 C48 106 48.5 126 49 142 L40 142 Z" fill="url(#pantsGradient)"/>
+      <path d="M40 140 C43 138.5 49 139 51 141 L54 146 C54 148 51 149 46 149 L40 148 Z" fill="url(#shoeGradient)"/>
+    </g>
+    <g data-part="armb"><path d="M23 53 C19.5 58 18 68 18 76 C18 80.5 19.5 82.5 21.5 82 C23.5 81.5 24.5 78 24.5 74 L27 59 Z" fill="url(#skinGradient)"/></g>
+    <path d="M27 48 C31 46 35 45 40 45 C45 45 49 46 53 48 L56 88 C52 92 46 94 40 94 C34 94 28 92 24 88 Z" fill="url(#shirtGradient)"/>
+    <path d="M27 52 C26 63 26 77 27 87" fill="none" stroke="#D4D8E0" stroke-width="1" opacity=".55"/>
+    <path d="M28 49 L39 47 L35 58 L28 52 Z" fill="#FFFFFF"/>
+    <path d="M52 49 L41 47 L45 58 L52 52 Z" fill="#FFFFFF"/>
+    <path data-part="scarf" d="M35 51 L40 54 L45 51 L43 61 L40 57 L36 65 L35 58 Z" fill="url(#scarfGradient)"/>
+    <circle cx="40" cy="54" r="2.1" fill="#C9414B"/>
+    <g data-part="armf"><path d="M53 53 C57 58 59 68 59 76 C59 80.5 57.5 82.5 55.5 82 C53.5 81.5 52.5 78 52.5 74 L50 59 Z" fill="url(#skinGradient)"/></g>
+    <path d="M36.5 41 L43.5 41 L44 49 C42 51 38 51 36 49 Z" fill="url(#skinGradient)"/>
+    <ellipse cx="30.5" cy="31" rx="2" ry="3.2" fill="#E2B28E"/>
+    <ellipse cx="49.5" cy="31" rx="2" ry="3.2" fill="#E2B28E"/>
+    <path d="M30 26 C30 19 34 14.5 40 14.5 C46 14.5 50 19 50 26 L49 35 C48 42 44 46 40 46 C36 46 32 42 31 35 Z" fill="url(#skinGradient)"/>
+    <path data-part="hair" d="M30 27 C29 20 31 16 35 14 C39 11.5 45 13 48 16 C51 19 51 24 50 29 C48 25 46 23 43 22 C40 21 37 22 35 24 C33 26 31 27 30 27 Z" fill="url(#hairGradient)"/>
+    <path d="M34 17 C37 14.5 41 14 44 16" fill="none" stroke="#765C67" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+  </g>
+
+  <g data-stage="shs" opacity="0">
+    <ellipse cx="40" cy="151.5" rx="19" ry="3" fill="url(#groundShadow)"/>
+    <g data-part="legb">
+      <path d="M32 86 L40 86 L39 143 L31 143 Z" fill="#303B52"/>
+      <path d="M30 140 C32 138.5 37 139 39 140 L41 146 C41 148 38 149 33 149 L28 148 C28 145 29 142 30 140" fill="url(#shoeGradient)"/>
+    </g>
+    <g data-part="legf">
+      <path d="M40 86 L48 86 L49 143 L40 143 Z" fill="#3A465E"/>
+      <path d="M40 140 C43 138.5 49 139 51 141 L54 146 C54 148 51 149 46 149 L40 148" fill="url(#shoeGradient)"/>
+    </g>
+    <g data-part="armb"><path d="M24 48 C20 55 19 67 19 76 C19 80 20.5 82 22.5 82 C24.5 81 25 78 25 75 L28 55 Z" fill="url(#skinGradient)"/></g>
+    <path d="M27 44 C31 42 35 41 40 41 C45 41 49 42 53 44 L55 88 C51 91 46 92 40 92 C34 92 29 91 25 88 Z" fill="#FFFFFF"/>
+    <path data-part="aodai" d="M25 85 C31 88 35 89 40 89 C45 89 50 88 55 85 L58 126 C52 129 46 130 40 130 C34 130 28 129 22 126 Z" fill="rgba(255,255,255,.88)"/>
+    <path d="M40 91 C38 105 38 117 39 128" fill="none" stroke="#D9DCE4" stroke-width="1" opacity=".55"/>
+    <g data-part="armf"><path d="M53 48 C57 54 58 67 58 76 C58 80 57 82 55 82 C53 81 52 78 52 75 L49 55 Z" fill="url(#skinGradient)"/></g>
+    <path d="M36 39 L44 39 L44 45 C42 47 38 47 36 45 Z" fill="url(#skinGradient)"/>
+    <path d="M29 24 C29 18 34 13 40 13 C46 13 51 18 51 24 L50 33 C49 40 45 44 40 44 C35 44 31 40 30 33 Z" fill="url(#skinGradient)"/>
+    <path data-part="hair" d="M29 26 C29 18 34 13 40 13 C46 13 51 18 51 26 C48 22 45 20 41 20 C36 20 33 23 29 26 Z" fill="url(#hairGradient)"/>
+  </g>
+
+  <g data-stage="sgr" opacity="0">
+    <ellipse cx="40" cy="151.5" rx="21" ry="3.5" fill="url(#groundShadow)"/>
+    <g data-part="legb"><path d="M32 99 L40 99 L39 143 L31 143 Z" fill="#292532"/></g>
+    <g data-part="legf"><path d="M40 99 L48 99 L49 143 L40 143 Z" fill="#332D40"/></g>
+    <path d="M30 140 C32 138.5 37 139 39 140 L41 146 C41 148 38 149 33 149 L28 148 C28 145 29 142 30 140" fill="url(#shoeGradient)"/>
+    <path d="M40 140 C43 138.5 49 139 51 141 L54 146 C54 148 51 149 46 149 L40 148" fill="url(#shoeGradient)"/>
+    <path d="M27 45 L53 45 L57 121 L23 121 Z" fill="url(#robeGradient)"/>
+    <path d="M28 47 L39 47 L39 119 L24 119 Z" fill="#5B5275" opacity=".35"/>
+    <g data-part="armb"><path d="M26 47 C22 54 20 69 20 80 C20 84 22 86 24 85 C27 84 28 80 28 75 L31 51 Z" fill="#3A344B"/></g>
+    <g data-part="armf"><path d="M54 47 C58 54 60 69 60 80 C60 84 58 86 56 85 C53 84 52 80 52 75 L49 51 Z" fill="#3A344B"/></g>
+    <path d="M35 45 L40 63 L45 45 L43 76 L40 68 L37 76 Z" fill="#F0EFF4"/>
+    <path d="M36 40 L44 40 L44 46 C42 48 38 48 36 46 Z" fill="url(#skinGradient)"/>
+    <circle cx="40" cy="27" r="11" fill="url(#skinGradient)"/>
+    <path data-part="hair" d="M29 27 C29 18 34 14 40 14 C46 14 51 18 51 27 C48 23 45 21 41 21 C36 21 33 24 29 27 Z" fill="url(#hairGradient)"/>
+    <g data-part="cap">
+      <path d="M25 16 L40 9 L55 16 L40 23 Z" fill="#29243C"/>
+      <path d="M31 17 L40 13 L49 17 L48 20 C43 22 37 22 32 20 Z" fill="#38314E"/>
+      <path d="M53 16 C56 21 55 27 54 31" fill="none" stroke="#D5B36E" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="54" cy="32" r="1.5" fill="#DDBD78"/>
+    </g>
+  </g>
+
+  <g data-stage="s26" opacity="0">
+    <ellipse cx="40" cy="151.5" rx="21" ry="3.5" fill="url(#groundShadow)"/>
+    <g data-part="legb"><path d="M32 99 L40 99 L39 143 L31 143 Z" fill="#332D40"/></g>
+    <g data-part="legf"><path d="M40 99 L48 99 L49 143 L40 143 Z" fill="#3C344B"/></g>
+    <path d="M30 140 C32 138.5 37 139 39 140 L41 146 C41 148 38 149 33 149 L28 148 C28 145 29 142 30 140" fill="url(#shoeGradient)"/>
+    <path d="M40 140 C43 138.5 49 139 51 141 L54 146 C54 148 51 149 46 149 L40 148" fill="url(#shoeGradient)"/>
+    <path d="M27 45 L53 45 L57 121 L23 121 Z" fill="#51486F"/>
+    <path d="M28 47 L40 47 L39 119 L24 119 Z" fill="#665D80" opacity=".32"/>
+    <path d="M35 45 L40 64 L45 45 L43 76 L40 68 L37 76 Z" fill="#EEEAF2"/>
+    <g data-part="armb"><path d="M26 47 C22 54 20 69 20 80 C20 84 22 86 24 85 C27 84 28 80 28 75 L31 51 Z" fill="#41395C"/></g>
+    <g data-part="armf"><path d="M54 47 C58 54 60 69 60 80 C60 84 58 86 56 85 C53 84 52 80 52 75 L49 51 Z" fill="#41395C"/></g>
+    <path d="M36 40 L44 40 L44 46 C42 48 38 48 36 46 Z" fill="#EBC5A2"/>
+    <circle cx="40" cy="27" r="11" fill="#F0DFC8"/>
+    <path data-part="hair" d="M29 27 C29 18 34 14 40 14 C46 14 51 18 51 27 C48 23 45 21 41 21 C36 21 33 24 29 27 Z" fill="#3A2F38"/>
+    <g data-part="cap">
+      <path d="M25 16 L40 9 L55 16 L40 23 Z" fill="#29243C"/>
+      <path d="M31 17 L40 13 L49 17 L48 20 C43 22 37 22 32 20 Z" fill="#38314E"/>
+      <path d="M53 16 C56 21 55 27 54 31" fill="none" stroke="#D5B36E" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="54" cy="32" r="1.5" fill="#DDBD78"/>
+    </g>
+  </g>
+
+  <g data-stage="ssg" opacity="0">
+    <ellipse cx="40" cy="151.5" rx="22" ry="4" fill="url(#groundShadow)"/>
+    <g data-part="legb"><path d="M32 87 L40 87 L39 143 L31 143 Z" fill="#25212D"/></g>
+    <g data-part="legf"><path d="M40 87 L48 87 L49 143 L40 143 Z" fill="#2D2836"/></g>
+    <path d="M30 140 C32 138.5 37 139 39 140 L41 146 C41 148 38 149 33 149 L28 148 C28 145 29 142 30 140" fill="#242A35"/>
+    <path d="M40 140 C43 138.5 49 139 51 141 L54 146 C54 148 51 149 46 149 L40 148" fill="#242A35"/>
+    <path d="M26 46 C31 43.5 35 42.5 40 42.5 C45 42.5 50 43.5 54 46 L57 91 C52 94 46 95 40 95 C34 95 28 94 23 91 Z" fill="url(#darkGradient)"/>
+    <path d="M29 50 C28 63 28 77 29 89" fill="none" stroke="#554B5B" stroke-width="1" opacity=".45"/>
+    <g data-part="armb"><path d="M25 48 C21 55 20 68 20 78 C20 82 22 84 24 83 C26 82 27 78 27 74 L30 52 Z" fill="#29242F"/></g>
+    <g data-part="armf"><path d="M55 48 C59 55 60 68 60 78 C60 82 58 84 56 83 C54 82 53 78 53 74 L50 52 Z" fill="#29242F"/></g>
+    <circle cx="40" cy="27" r="11" fill="#302B38"/>
+    <path data-part="hair" d="M29 27 C29 18 34 14 40 14 C46 14 51 18 51 27 C48 23 45 21 41 21 C36 21 33 24 29 27 Z" fill="#211D27"/>
+    <path d="M51 20 C55 29 55 38 52 45" fill="none" stroke="#FFD79A" stroke-width="1.5" stroke-linecap="round" opacity=".38"/>
   </g>
 </svg>
 ```
 
-### Nhân vật B (tóc dài, áo dài trắng ở giai đoạn `shs`)
-```html
-<svg viewBox="0 0 60 150" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;">
-  <g data-stage="s19">
-    <g data-part="legb"><rect x="27" y="88" width="7" height="56" rx="3.5" fill="#3E4E6B"></rect></g>
-    <g data-part="legf"><rect x="27" y="88" width="7" height="56" rx="3.5" fill="#4A5C7A"></rect></g>
-    <g data-part="armb"><rect x="13" y="50" width="6.5" height="30" rx="3" fill="#E3C2A4"></rect></g>
-    <path d="M21 45 L39 45 L42 92 L18 92 Z" fill="#F7F7F9"></path>
-    <path data-part="scarf" d="M23 50 L37 50 L33 62 L30 54 L27 62 Z" fill="#C94A4A"></path>
-    <g data-part="armf"><rect x="40.5" y="50" width="6.5" height="30" rx="3" fill="#F0D5BA"></rect></g>
-    <circle cx="30" cy="27" r="10.5" fill="#F0D5BA"></circle>
-    <path d="M19 26 C19 13, 27 11, 31 13 C38 12, 41 18, 41 27 C41 21, 36 19, 30 20 C24 21, 20 22, 19 26 Z" fill="#33272E"></path>
-    <path data-part="hair" d="M26 34 C24 44, 25 54, 28 60 C31 53, 31 42, 29 34 Z" fill="#33272E"></path>
-  </g>
-  <g data-stage="shs" opacity="0">
-    <g data-part="legb"><rect x="27" y="84" width="7" height="60" rx="3.5" fill="#EFEFF4"></rect></g>
-    <g data-part="armb"><rect x="12.5" y="44" width="6.5" height="32" rx="3" fill="#E3C2A4"></rect></g>
-    <path d="M22 39 L38 39 L41 88 L19 88 Z" fill="#FFFFFF"></path>
-    <path data-part="aodai" d="M19 88 L41 88 L44 128 L16 128 Z" fill="rgba(255,255,255,.85)"></path>
-    <g data-part="armf"><rect x="41" y="44" width="6.5" height="32" rx="3" fill="#F0D5BA"></rect></g>
-    <circle cx="30" cy="23" r="10" fill="#F0D5BA"></circle>
-    <path d="M19 22 C19 10, 27 8, 31 10 C38 9, 41 15, 41 23 C41 17, 36 15, 30 16 C24 17, 20 18, 19 22 Z" fill="#33272E"></path>
-    <path data-part="hair" d="M26 30 C23 44, 24 58, 28 66 C32 57, 32 42, 30 30 Z" fill="#33272E"></path>
-  </g>
-  <g data-stage="sgr" opacity="0">
-    <g data-part="legb"><rect x="27" y="100" width="8" height="44" rx="4" fill="#28313F"></rect></g>
-    <g data-part="armb"><rect x="15" y="42" width="6.5" height="42" rx="3" fill="#322D46"></rect></g>
-    <path d="M19 38 L41 38 L45 122 L15 122 Z" fill="#3B3552"></path>
-    <path d="M26 38 L30 62 L34 38 Z" fill="#EFEFF4"></path>
-    <g data-part="armf"><rect x="39" y="42" width="6.5" height="42" rx="3" fill="#322D46"></rect></g>
-    <circle cx="30" cy="23" r="10" fill="#F0D5BA"></circle>
-    <path d="M19 22 C19 11, 27 9, 31 11 C38 10, 41 16, 41 23 C41 17, 36 15, 30 16 C24 17, 20 18, 19 22 Z" fill="#33272E"></path>
-    <path data-part="hair" d="M25 30 C22 44, 24 58, 28 66 C32 57, 31 42, 29 30 Z" fill="#33272E"></path>
-    <rect data-part="cap" x="17" y="12" width="27" height="4" rx="1" fill="#2C2740"></rect>
-    <rect data-part="cap" x="26" y="8" width="8" height="5" rx="1" fill="#2C2740"></rect>
-  </g>
-  <g data-stage="s26" opacity="0">
-    <g data-part="legb"><rect x="27" y="100" width="8" height="44" rx="4" fill="#4A4258"></rect></g>
-    <g data-part="armb"><rect x="14" y="44" width="6" height="36" rx="3" fill="#8F82A6"></rect></g>
-    <path d="M22 40 L38 40 L41 114 L19 114 Z" fill="#6B5F82"></path>
-    <g data-part="armf"><rect x="40" y="44" width="6" height="36" rx="3" fill="#8F82A6"></rect></g>
-    <circle cx="30" cy="24" r="10" fill="#9A8FAE"></circle>
-    <path d="M19 23 C19 12, 27 10, 31 12 C38 11, 41 17, 41 24 C41 18, 36 16, 30 17 C24 18, 20 19, 19 23 Z" fill="#4A4058"></path>
-    <path data-part="hair" d="M25 31 C22 45, 24 59, 28 67 C32 58, 31 43, 29 31 Z" fill="#4A4058"></path>
-  </g>
-  <g data-stage="ssg" opacity="0">
-    <g data-part="legb"><rect x="27" y="86" width="7" height="58" rx="3.5" fill="#2A2430"></rect></g>
-    <g data-part="legf"><rect x="27" y="86" width="7" height="58" rx="3.5" fill="#2E2836"></rect></g>
-    <g data-part="armb"><rect x="12.5" y="44" width="6.5" height="34" rx="3" fill="#262030"></rect></g>
-    <path d="M21 39 L39 39 L42 91 L18 91 Z" fill="#2E2836"></path>
-    <g data-part="armf"><rect x="41" y="44" width="6.5" height="34" rx="3" fill="#262030"></rect></g>
-    <circle cx="30" cy="23" r="10" fill="#2E2836"></circle>
-    <path d="M19 22 C19 11, 27 9, 31 11 C38 10, 41 16, 41 23 C41 17, 36 15, 30 16 C24 17, 20 18, 19 22 Z" fill="#231E2A"></path>
-    <path data-part="hair" d="M25 30 C22 44, 24 58, 28 66 C32 57, 31 42, 29 30 Z" fill="#231E2A"></path>
-    <path d="M40 15 C43 22, 43 36, 41 46 L43 46 C45 34, 45 20, 42 14 Z" fill="rgba(255,215,154,.5)"></path>
-  </g>
-</svg>
-```
+> Đã áp vào `index.html` thật: viewBox `80×160`, container `#figB` đổi thành `80×160px`, gradient id đổi tên thêm hậu tố `B` (`skinGradientB`, `shirtGradientB`...) để không trùng với các gradient của nhân vật A. Tâm xoay tay/chân trong JS cho nhân vật B cũng đã đổi từ `(30,90)/(30,48)/(30,36)` sang `(40,92)/(40,49)/(40,40)` để khớp hệ toạ độ mới. Nhân vật B cũng được dời sang `left: 90px` (từ 70px) và toàn bộ đường cong khoảng cách giữa 2 người (`gap`) trong JS tăng thêm 20px ở mọi mốc, để không bị đè lên nhân vật A rộng hơn.
 
 ---
 
