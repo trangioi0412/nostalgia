@@ -169,7 +169,7 @@
     var bandHalf = 320;
     var minX = Math.max(10, originX - bandHalf - w / 2);
     var maxX = Math.min(window.innerWidth - w - 10, originX + bandHalf - w / 2);
-    var groundY = Math.min(originY + 210, window.innerHeight - h - 90);
+    var groundY = Math.min(originY + h / 2 + 150, window.innerHeight - 60);
     var cards = [];
     for (var i = 0; i < MEMORIES.length; i++) {
       var m = MEMORIES[i];
